@@ -1,0 +1,38 @@
+
+/*-----絞り込み-----*/
+
+.top_select{
+    display: flex;
+    align-items: center;
+}
+
+.top_select select{
+    margin-top: -15px;
+}
+
+/*-----議事録リスト-----*/
+
+td{
+    vertical-align: middle;
+}
+
+.date{
+    text-align: right;
+}
+
+/*-----スマホの場合-----*/
+@media screen and (max-width: 640px) {
+
+    table{
+        text-align: center;
+        border: none;
+    }
+
+    th,
+    td {
+        border-bottom: none;
+        display: block;
+        width: 100%;
+    }
+}
+   

@@ -1,0 +1,38 @@
+/*-----削除ボタン(編集ページのみ)-----*/
+.delete_button{
+    font-size: 1.2em;
+    color: #6c757d;
+    text-align: right;
+}
+
+.delete_button:hover{
+    color: #333333;
+}
+
+/*-----ジャンルの追加ボタン-----*/
+.genre_add{
+    font-size: 1.5em;
+    color:#38c172;
+}
+
+.genre_add:hover{
+    color: forestgreen
+}
+
+/*-----サブミットボタン-----*/
+.submit_button{
+    width: 300px;
+    display: block; 
+}
+
+@media screen and (max-width: 640px) {
+    .submit_button{
+        margin: 0 auto 0 auto;
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .submit_button{
+        margin: 0 0 0 auto;
+    }
+}

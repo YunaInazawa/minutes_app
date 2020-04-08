@@ -1,0 +1,41 @@
+/*-----サブタイトル-----*/
+.subtitle {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px gray;/*左線*/
+}
+
+.subtitle:hover{
+    background-color: #e7e7e7;
+}
+
+.subtitle:after{
+    content: "▼";
+}
+
+.subtitle[aria-expanded="false"]:after {
+    content: "▲";
+  }
+  
+.subtitle[aria-expanded="true"]:after {
+    content: "▼";
+}
+
+/*-----フッターのボタン-----*/
+.footer_btn{
+    text-align: right;
+}
+
+/*-----スクリーンのサイズによって日付部分の文字寄せ変える------*/
+@media screen and (max-width: 640px) {
+    .date{
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .date{
+        text-align: right;
+    }
+}
