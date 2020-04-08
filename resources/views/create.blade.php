@@ -16,10 +16,12 @@
                       <li class="breadcrumb-item active" aria-current="page">議事録作成</li>
                     </ol>
                 </nav>
-            </div>
-
+            
             <h1>作成</h1>
             <hr>
+
+            </div>
+
 
             <div class="col-sm-12 col-md-10 mx-auto">
                 <form>
