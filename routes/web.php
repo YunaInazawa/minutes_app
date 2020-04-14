@@ -13,18 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'CrudController@index');
+Route::get('/show/{id}', 'CrudController@show');
 
-Route::get('/show/1', function () {
-    return view('detail');
-});
+Route::get('/create', 'CrudController@create');
+Route::post('/new', 'CrudController@new');
 
-Route::get('/create', function () {
-    return view('create');
-});
+Route::get('/edit/{id}', 'CrudController@edit');
+Route::post('/update', 'CrudController@update');
 
-Route::get('/edit/1', function () {
-    return view('edit');
-});
+Route::get('/delete/{id}', 'CrudController@delete');
