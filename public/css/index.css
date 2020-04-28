@@ -11,28 +11,37 @@
 }
 
 /*-----議事録リスト-----*/
+.report{
+    color:black;
+    padding-top: 4px;
+    padding-bottom: 7px;
+}
+.report:hover{
+    background-color: #e7e7e7;
+}
 
-td{
-    vertical-align: middle;
+a:hover{
+    text-decoration: none;
+}
+
+.genre{
+    margin-top: -10px;
 }
 
 .date{
+    margin-top: -70px;
     text-align: right;
 }
 
 /*-----スマホの場合-----*/
 @media screen and (max-width: 640px) {
-
-    table{
-        text-align: center;
-        border: none;
+    .top_add{
+        text-align: right;
     }
 
-    th,
-    td {
-        border-bottom: none;
-        display: block;
-        width: 100%;
+    .top_select{
+        font-size: 0.8em;
     }
+
 }
    

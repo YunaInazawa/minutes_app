@@ -40,7 +40,5 @@
     </main>
   </div>
 </body>
-<footer>
-  <div class="footer_test"></div>
-</footer>
+
 </html>
