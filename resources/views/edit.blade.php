@@ -38,6 +38,9 @@
                     <div class="form-group">
                         <label for="title_input">タイトル</label>
                         <input type="text" class="form-control" id="title_input" name="title_input" value="{{ old('title_input', $report_data->title) }}" placeholder="タイトルを入力して下さい(例：新入生ほんまにくるんか？)">
+                        @error('title_input')
+                            <font color="red">※ {{ $message }}</font>
+                        @enderror
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -56,6 +59,9 @@
                         <div class="form-group col-md-6">
                             <label for="user_input">作成者</label>
                             <input type="text" class="form-control" id="user_input" name="user_input" value="{{ old('user_input', $report_data->user) }}">
+                            @error('user_input')
+                            <font color="red">※ {{ $message }}</font>
+                            @enderror
                         </div>
                     </div>
 
@@ -84,7 +90,7 @@
 
                     <input type="hidden" id="subtitle_count" name="subtitle_count" value="{{ old('subtitle_count', count($detail_data)) }}">
                     <input type="hidden" id="report_id" name="report_id" value="{{ $report_data->id }}">
-                    <div class="submit_button btn btn-primary mb-5" type="submit">確認</div>
+                    <input class="submit_button btn btn-primary mb-5" type="submit" value="確認">
                     </div>
                 </form>
 
