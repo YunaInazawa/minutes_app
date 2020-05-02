@@ -1,5 +1,9 @@
 @extends('layouts/app')
 
+@section('javascript')
+    <script src="{{ asset('js/create.js') }}" defer></script>
+@endsection
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/create.css') }}">
 @endsection
@@ -29,15 +33,16 @@
             </div>
 
             <div class="col-sm-12 col-md-10 mx-auto">
-                <form>
+                <form method="POST" action="/update">
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <label for="title_input">タイトル</label>
-                        <input type="text" class="form-control" id="title_input" value="{{ old('title_input', $report_data->title) }}" placeholder="タイトルを入力して下さい(例：新入生ほんまにくるんか？)">
+                        <input type="text" class="form-control" id="title_input" name="title_input" value="{{ old('title_input', $report_data->title) }}" placeholder="タイトルを入力して下さい(例：新入生ほんまにくるんか？)">
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="genre_input">ジャンル <i class="genre_add fas fa-plus" data-toggle="modal" data-target="#genre_add_modal"></i></label>
-                            <select class="form-control" id="genre_input">
+                            <select class="form-control" id="genre_input" name="genre_input">
                                 <option selected>選択して下さい</option>
                                 @foreach( $genre_data as $data )
                                 <option value="{{ $data->genre_name }}" {{ $report_data->genre_id == $data->id ? 'selected' : '' }}>{{ $data->genre_name }}</option>
@@ -46,11 +51,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="meetingday_input">会議日</label>
-                            <input type="date" class="form-control" id="meetingday_input" value="{{ old('meetingday_input', $report_data->meeting_date) }}">
+                            <input type="date" class="form-control" id="meetingday_input" name="meetingday_input" value="{{ old('meetingday_input', $report_data->meeting_date) }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="user_input">作成者</label>
-                            <input type="text" class="form-control" id="user_input" value="{{ old('user_input', $report_data->user) }}">
+                            <input type="text" class="form-control" id="user_input" name="user_input" value="{{ old('user_input', $report_data->user) }}">
                         </div>
                     </div>
 
@@ -71,13 +76,14 @@
 
                     <div id="add_subtitle"></div>
 
-                    <button type="button" class="btn btn-success my-3">
+                    <button type="button" class="btn btn-success my-3" onclick="addSubtitle()">
                         <i class="fas fa-plus"></i> 議題追加
                     </button>
 
                     <hr>
 
                     <input type="hidden" id="subtitle_count" name="subtitle_count" value="{{ old('subtitle_count', count($detail_data)) }}">
+                    <input type="hidden" id="report_id" name="report_id" value="{{ $report_data->id }}">
                     <div class="submit_button btn btn-primary mb-5" type="submit">確認</div>
                     </div>
                 </form>
@@ -95,14 +101,14 @@
                             <form>
                             <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="title_input">ジャンル名</label>
-                                        <input type="text" class="form-control" id="title_input" placeholder="例：新歓2020">
+                                        <label for="add_genre_input">ジャンル名</label>
+                                        <input type="text" class="form-control" id="add_genre_input" placeholder="例：新歓2020">
                                     </div>
                                 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                <button type="button" class="btn btn-primary">追加</button>
+                                <button type="button" class="btn btn-primary" onclick="addGenre()">追加</button>
                             </div>
                             </form>
                         </div>
