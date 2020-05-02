@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Report extends Model
 {
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
+    
     public function genre(){
         return $this->belongsTo('App\Genre');
     }
