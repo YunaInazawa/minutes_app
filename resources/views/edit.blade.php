@@ -136,7 +136,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                <button type="button" class="btn btn-primary">追加</button>
+                                <button type="button" class="btn btn-primary" onclick="location.href = '/delete/{{ $report_data->id }}'">削除</button>
                             </div>
                         </div>
                     </div>

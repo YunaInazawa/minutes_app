@@ -107,6 +107,8 @@ class CrudController extends Controller
     }
 
     public function delete( $id = 0 ){
-        // return redirect('');
+        Report::where('id', $id)->delete();
+
+        return redirect('/');
     }
 }
