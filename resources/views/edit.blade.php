@@ -39,9 +39,9 @@
                             <label for="genre_input">ジャンル <i class="genre_add fas fa-plus" data-toggle="modal" data-target="#genre_add_modal"></i></label>
                             <select class="form-control" id="genre_input">
                                 <option selected>選択して下さい</option>
-                                <option value="1">新入生歓迎2019</option>
-                                <option value="2">送別会2019</option>
-                                <option value="3">赤ちゃん本舗2019</option>
+                                @foreach( $genre_data as $data )
+                                <option value="{{ $data->genre_name }}" {{ old('genre_input') == $data->genre_name ? 'selected' : '' }}>{{ $data->genre_name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
