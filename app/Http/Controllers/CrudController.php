@@ -81,8 +81,29 @@ class CrudController extends Controller
 
         ReportDetail::where('report_id', $id)->delete();
 
-        return view('update', ['t' => $title, 'g' => $genre, 'm' => $meetingday, 'u' => $user, 's' => $count]);
-        // return redirect('');
+        $deleted_data = ReportDetail::onlyTrashed()->where('report_id', $id)->get();
+        for( $i = 0; $i < $count; $i++ ){
+            if( $i < count($deleted_data) ){
+                $add_detail = $deleted_data[$i];
+                $add_detail->restore();
+
+                $add_detail->subtitle = $subtitle[$i];
+                $add_detail->content = $contents[$i];
+                $add_detail->report_id = $change_report->id;
+                $add_detail->updated_at = $now;
+                $add_detail->save();
+            }else{
+                $add_detail = new ReportDetail;
+                $add_detail->subtitle = $subtitle[$i];
+                $add_detail->content = $contents[$i];
+                $add_detail->report_id = $change_report->id;
+                $add_detail->created_at = $now;
+                $add_detail->updated_at = $now;
+                $add_detail->save();
+            }
+        }
+
+        return redirect('/show/' . $change_report->id);
     }
 
     public function delete( $id = 0 ){
